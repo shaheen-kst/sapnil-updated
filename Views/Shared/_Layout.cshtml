@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Http; 
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> _signInManager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sapnil</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<!--     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+ -->    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/themes/cupertino/jquery-ui.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Galada|Hind+Siliguri|Lato|Martel|Mina&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+<body>
+    @{
+        //var url = HttpContext.Request.GetDisplayUrl();
+      // Microsoft.AspNetCore.Http.Extensions.UriHelper.GetFullUrl(Request)
+     // <h1> @Context.Request.Host@Context.Request.Path</h1>
+     // <p>@($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}")</p>
+     // <h2>var url = $"{Context.Request.Path}{Context.Request.QueryString}"</h2>
+     //var t =  ViewContext.RouteData.Values["page"];
+     //var id = HttpContext.Current.Request.RequestContext.RouteData.Values["id"];
+     //<h1>@t</h1>
+    }
+ 
+    <header class="mt-1">
+        <div class="container bg pt-1 shadow bg-white rounded">
+            <div class="row mx-5 px-3 ">
+            <div class="col-md-2 text-center ">
+                <img src="/images/sign.jpg" class=" rounded-circle d-inline-block pt-1" width="125" height="125"/>
+            </div>
+            <div class="col-md-9">
+                <h1 class="pt-3  text-center name text-danger">স্বপ্নীল অপটিকস্</h1>
+                <h5 class="text-center gf ">৪৯, জিগাতলা, ধানমন্ডি, ঢাকা-১২০৯</h5>
+                <h6 class="text-center">Cell: 01712841584, Phone : 9615923 </h6>
+
+
+            </div>
+            </div> <!--row-->
+        </div><!--container -->
+
+        <div class="row">
+            <div class="container shadow  bg-white rounded">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow px-5">
+               
+                <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">Sapnil</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="navbar-nav flex-grow-1 ml-4 ">
+                           @{
+                               var uri = $"{Context.Request.Path}{Context.Request.QueryString}";
+                            if(uri == "/")
+                            {
+                            <li class="nav-item current">
+                                <a class="nav-link " asp-area="" asp-controller="sale" asp-action="create">Home</a>
+                            </li>
+                            }else {
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="sale" asp-action="create">Home</a>
+                            </li>
+                            }
+                            if(uri.Contains("/customer/index"))
+                            {
+                                <li class="nav-item current">
+                                   <a class="nav-link text-dark" asp-area="" asp-controller="customer" asp-action="index">Sale History</a>
+                                </li>
+                            }else {
+                                <li class="nav-item">
+                                   <a class="nav-link text-dark" asp-area="" asp-controller="customer" asp-action="index">Sale History</a>
+                                </li>
+                            }
+                            if(uri =="/sum/search" || uri == "/Sum/Search")
+                            {
+                                <li class="nav-item current">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="sum" asp-action="search">Account</a>
+                                </li>
+                            }else {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="sum" asp-action="search">Account</a>
+                                </li>
+                            }
+                           }
+                        </ul>
+                         <ul class="nav navbar-nav ml-auto">
+                                @if(_signInManager.IsSignedIn(User)){
+                                    
+                                    <li class="nav-item">
+                                        <form method="post" asp-action="Logout" asp-controller="Admin">
+                                            <button type="submit" class="nav-link btn btn-link py-0">
+                                            <i class="fas fa-sign-out-alt"></i> Logout  @User.Identity.Name 
+                                        </form>
+            
+                                    </li>
+
+                                }else {
+                                        <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Admin" asp-action="Register"><span class="fas fa-user"></span> Sign Up</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link"  asp-controller="Admin"  asp-action="Login"><span class="fas fa-sign-in-alt"></span> Login</a>
+                                        </li>
+
+                                }
+                            
+                            </ul>
+                    </div>
+              
+
+            </nav> 
+            </div><!--container-->
+        </div><!--row-->
+    </header>
+    <div class="container pt-5 shadow  bg-white rounded ">
+        <main role="main" class="pb-3">
+            @RenderBody()
+            
+        </main>
+    </div>
+ 
+       <footer class="border-top footer text-muted">
+        <div class="container  shadow rounded bg-primary" >
+           <p class="text-center text-white"> &copy; 2005-2019 Sapnil Optics, 49, Jigatala, Dhanmondi,Dhaka-1209, Cell: 01712841584, Phone : 9615923 </p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script> 
+   @* <script
+   src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script> *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="~/js/date.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/math.js" asp-append-version="true"></script>
+    <script src="~/js/autofill.js" asp-append-version="true"></script>
+    <script src="~/js/details.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

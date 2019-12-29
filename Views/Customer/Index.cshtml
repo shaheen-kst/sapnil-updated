@@ -1,0 +1,113 @@
+ @model PagedList.Core.IPagedList<Sapnil.Models.Customer>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+  
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <form asp-action="Index" method="get">  
+                <div class="input-group ">
+                <input type="text" name="keyword" class="form-control search" placeholder="Search" value="@ViewBag.keyword">
+                <div class="input-group-append">
+                    <!-- <button class="btn btn-success" type="submit">Go</button> -->
+                    <button class="" type="submit"><img src="~/images/search.png" class="src" /></button>
+                </div>
+                </div>
+        </form>
+    </div><!--1st Column-->
+    <div class="col-md-7 mb-5">
+        <form asp-action="Search" autocomplete="off">
+            <div class="input-group">
+                <input type="text" name="from" class="form-control date" />
+                <div class="input-group-append">
+                    <span class="input-group-text">To </span>
+                </div> <!-- append -->
+                <input type="text" name="to" class="form-control date" />
+                <div class="input-group-append">
+                    <button type="submit" class=""><img src="~/images/search.png" class="src" /></button>
+                </div><!-- append -->
+
+            </div> <!-- input-group -->
+        </form>
+    </div> <!-- end of col -->
+</div> <!-- End row -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Invoice No
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+               Cell No
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+               Invoice Date
+            </th>
+            <th>
+                Delivery Date
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Total Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellNo)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                <button data-toggle="popover" class="product" data-trigger="hover" id="@item.Product.Id">Product Info</button>
+            </td>
+            <td>
+                <a href="" data-toggle="popover" class="payment" data-trigger="hover" id="@item.Payment.Id">@item.Payment.TotalAmmount</a>
+                
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="container ">
+    <div class="row justify-content-center pt-3">
+        <div class="col-md-4 text-center">
+        <pager list="@Model"  asp-controller="Customer"  asp-action="Index" asp-route-keyword=""/>
+        </div> <!--col-->
+    </div><!--row-->
+</div>
+

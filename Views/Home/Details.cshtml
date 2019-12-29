@@ -1,0 +1,29 @@
+@model Sapnil.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+@if(Model !=null)
+{
+<div style="background-color:#e3e3e3;color: red;">
+    @if(Model.FrameName !=null)
+    {
+      <p> <strong>Frame</strong> - Name : @Model.FrameName, Quantity : @Model.FrameQty, Price: @Model.FramePrice</p>
+    }
+    @if(Model.PowerLense != null)
+    {
+     <p><strong>Lense</strong> - Name: @Model.PowerLense, Quantity : @Model.PowerLenseQty, Price : @Model.PowerLensePrice</p>
+    }
+    @if(Model.ContactLense != null)
+    {
+     <p><strong>Contact Lese</strong> - Color: @Model.ContactLense, Quantity : @Model.ContactLenseQty, Price : @Model.ContactLensePrice</p>
+    }
+     <p><strong>Right Eye </strong>: Sph : @Model.RightEyeSph, Cyl: @Model.RightEyeCyl, Axis: @Model.RightEyeAxis, N.Add: @Model.RightEyeAdd</p>
+     <p><strong>Left Eye </strong>: Sph : @Model.LeftEyeSph, Cyl: @Model.LeftEyeCyl, Axis: @Model.LeftEyeAxis, N.Add: @Model.LeftEyeAdd</p>
+     <p><strong>Focal Option</strong>: @Model.FocalOption</p>
+     <p><strong>Delivery Status</strong>: @Model.DeliveryStatus</p>
+</div>
+
+}

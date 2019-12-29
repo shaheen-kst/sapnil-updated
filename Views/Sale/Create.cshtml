@@ -1,0 +1,316 @@
+@model Sapnil.Models.ProductVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+        <form asp-action="Create" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<fieldset class="fs-border p-3 mb-3 rounded ">
+    <legend class="">Client Info</legend>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="CellNo" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="CellNo" class="form-control cellNo" />
+                        <span asp-validation-for="CellNo" class="text-danger"></span>
+                    </div>
+                
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="Address" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="Address" class="form-control "  />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                    <input asp-for="Name" class="form-control" /> 
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                         <label asp-for="DeliveryDate" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="DeliveryDate" type="text" class="form-control date" />
+                        <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>            
+    </fieldset>
+    <fieldset class="fs-border p-3 mb-3 rounded">
+        <legend class=" text-center">Product info</legend>
+        <div class="row">
+        <div class="col-md-4">
+            <fieldset class="fs-border py-2 px-3 rounded"> <legend class=""> Frame Info</legend>
+
+            <div class="form-group">
+                <label asp-for="FrameName" class="control-label"></label>
+                <input asp-for="FrameName" class="form-control" />
+                <span asp-validation-for="FrameName" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="FrameQty" class="control-label"></label>
+                <input asp-for="FrameQty" class="form-control" min="1" oninput="validity.valid || (value='');"/>
+                <span asp-validation-for="FrameQty" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="FramePrice" class="control-label"></label>
+                <input asp-for="FramePrice" class="form-control" />
+                <span asp-validation-for="FramePrice" class="text-danger"></span>
+            </div>
+            <fieldset>
+        </div>
+        <div class="col-md-4">
+            <fieldset class="fs-border py-2 px-3 rounded"> <legend class=""> Lense Info</legend>
+                <div class="form-group">
+                    <label asp-for="PowerLense" class="control-label"></label>
+                    <select asp-for="PowerLense" class="form-control" asp-items="Html.GetEnumSelectList<LenseCategory>()">
+                        <option value="" selected>== Select a lense ==</option>
+                    </select>
+                    <span asp-validation-for="PowerLense" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PowerLenseQty" class="control-label"></label>
+                    <input asp-for="PowerLenseQty" class="form-control" min="1" oninput="validity.valid || (value='');" />
+                    <span asp-validation-for="PowerLenseQty" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PowerLensePrice" class="control-label"></label>
+                    <input asp-for="PowerLensePrice" class="form-control" />
+                    <span asp-validation-for="PowerLensePrice" class="text-danger"></span>
+                </div>
+            <fieldset>
+
+        </div>
+        <div class="col-md-4">
+                <fieldset class="fs-border py-2 px-3 rounded">
+                    <legend class="">Contact Lense</legend>
+                     <div class="form-group">
+                        <label asp-for="ContactLense" class="control-label"></label>
+                        <select asp-for="ContactLense" class="form-control" asp-items="Html.GetEnumSelectList<ContactLenseCategory>()">
+                            <option value="" selected>== Select a contact lense ==</option>
+                        </select>
+                        <span asp-validation-for="ContactLense" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactLenseQty" class="control-label"></label>
+                        <input asp-for="ContactLenseQty" class="form-control" min="1" oninput="validity.valid || (value='');" />
+                        <span asp-validation-for="ContactLenseQty" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ContactLensePrice" class="control-label"></label>
+                        <input asp-for="ContactLensePrice" class="form-control" />
+                        <span asp-validation-for="ContactLensePrice" class="text-danger"></span>
+                    </div>
+                <fieldset>
+        </div>
+       </div>
+     
+    
+        <fieldset class="fs-border px-2 py-1 mb-3 mt-3 px-3 rounded">
+            <legend class="">Right Eye</legend>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <label asp-for="RightEyeSph" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="RightEyeSph" class="form-control" />
+                        <span asp-validation-for="RightEyeSph" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="form-group row">
+                        <label asp-for="RightEyeCyl" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="RightEyeCyl" class="form-control" />
+                            <span asp-validation-for="RightEyeCyl" class="text-danger"></span>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="form-group row">
+                        <label asp-for="RightEyeAxis" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="RightEyeAxis" class="form-control" />
+                            <span asp-validation-for="RightEyeAxis" class="text-danger"></span>
+                        </div>
+                    
+                   </div>
+                       
+            </div>
+           
+            <div class="col-md-3">
+                    <div class="form-group row">
+                    <label asp-for="RightEyeAdd" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="RightEyeAdd" class="form-control" />
+                        <span asp-validation-for="RightEyeAdd" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </fieldset>  <!--right eye -->
+    <fieldset class="fs-border px-2 py-1 mt-3 px-3 rounded">
+        <legend class="">Left Eye</legend>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <label asp-for="LeftEyeSph" class="col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="LeftEyeSph" class="form-control" />
+                        <span asp-validation-for="LeftEyeSph" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="form-group row">
+                        <label asp-for="LeftEyeCyl" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="LeftEyeCyl" class="form-control" />
+                            <span asp-validation-for="LeftEyeCyl" class="text-danger"></span>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="form-group row">
+                        <label asp-for="LeftEyeAxis" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="LeftEyeAxis" class="form-control" />
+                            <span asp-validation-for="LeftEyeAxis" class="text-danger"></span>
+                        </div>
+                    
+                   </div>
+                       
+            </div>
+            
+            <div class="col-md-3">
+                    <div class="form-group row">
+                        <label asp-for="LeftEyeAdd" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="LeftEyeAdd" class="form-control" />
+                            <span asp-validation-for="LeftEyeAdd" class="text-danger"></span>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        </fieldset> <!-- left eye -->
+      <fieldset class="fs-border mt-3 px-3 py-1 rounded">
+          <legend class="">Focal & Delivery Info </legend>
+        <div class="row">
+            <div class="col-md-6 border-right">
+                <label asp-for="FocalOption" class="control-label ml-3"></label> 
+                <div class="form-check form-check-inline ml-5">
+                    <input asp-for="FocalOption" type="radio" class="form-check-input" value="unifocal" id="unifocal" />
+                    <label for="unifocal" class="form-check-label"> Unifocal </label>
+                    <span asp-validation-for="FocalOption" class="text-danger"></span>
+                </div>
+                <div class="form-check form-check-inline ml-5">
+                    <input asp-for="FocalOption" type="radio" class="form-check-input " value="bifocal" id="bifocal" />
+                    <label for="bifocal" class="form-check-label"> Bifocal </label>
+                    <span asp-validation-for="FocalOption" class="text-danger"></span>
+                </div>
+            </div> <!--1st column-->
+            <div class="col-md-6">
+              <label asp-for="DeliveryStatus" class="control-label ml-3"></label> 
+            <div class="form-check form-check-inline mlh-4">
+                <input asp-for="DeliveryStatus" type="radio" id="not" class="form-check-input" value="Not-delivered" />
+                <label for="not" class="form-check-label"> Not Delivered  </label>
+                <!-- <span asp-validation-for="DeliveryStatus" class="text-danger"></span> -->
+            </div>
+            <div class="form-check form-check-inline ml-5">
+                <input asp-for="DeliveryStatus" type="radio" id="yes" class="form-check-input" value="Delivered" />
+                <label for="yes" class="form-check-label"> Delivered </label><br>
+                <span asp-validation-for="DeliveryStatus" class="text-danger"></span>
+            </div>
+            </div> <!--2nd Column-->
+
+        </div> <!--row--->
+    </fieldset>
+    </fieldset>
+      
+    <fieldset class="fs-border mt-3 p-3 rounded">
+        <legend class="">Payment Details</legend>
+
+            <div class="form-group row">
+                            <label asp-for="TotalAmmount" class="col-md-7 col-form-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="TotalAmmount" class="form-control totalAmount" />
+                                <span asp-validation-for="TotalAmmount" class="text-danger"></span>
+                            </div>
+            </div>
+            <div class="form-group row">
+                            <label asp-for="DiscountAmount" class="col-md-7 col-form-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="DiscountAmount" class="form-control" />
+                                <span asp-validation-for="DiscountAmount" class="text-danger"></span>
+                            </div>
+            </div>
+            <div class="form-group row">
+                            <label asp-for="NetAmount" class="col-md-7 col-form-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="NetAmount" class="form-control" />
+                                <span asp-validation-for="NetAmount" class="text-danger"></span>
+                            </div>
+            </div>
+            <div class="form-group row">
+                            <label asp-for="PaidAmount" class="col-md-7 col-form-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="PaidAmount" class="form-control" />
+                                <span asp-validation-for="PaidAmount" class="text-danger"></span>
+                            </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DueAmount" class="col-md-7 col-form-label"></label>
+                <div class="col-md-5">
+                    <input asp-for="DueAmount" class="form-control" />
+                    <span asp-validation-for="DueAmount" class="text-danger"></span>
+                </div>
+            </div>
+           
+            
+            <div class="form-group row">
+                <label for="" class="col-md-7 col-form-label"></label>
+                <div class="col-md-5">
+                    <input type="submit" value="Submit" class="btn btn-primary" style="width:100%" />
+                </div>
+            </div>           
+         
+      </fieldset>      
+            
+        </form>
+ 
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

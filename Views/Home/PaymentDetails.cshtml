@@ -1,0 +1,27 @@
+@model Sapnil.Models.Payment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+@if(Model !=null)
+{
+<div style="background-color:#e3e3e3;color: red;">
+    @if(Model.TotalAmmount !=null)
+    {
+      <p> <strong>Total Amount</strong> -  @Model.TotalAmmount</p>
+    }
+   
+     <p><strong>NetAmount</strong> -  @Model.NetAmount</p>
+    
+    @if(Model.DiscountAmount != null)
+    {
+     <p><strong>Discount Amount</strong> -@Model.DiscountAmount</p>
+    }
+     <p><strong>Paid Amount </strong>: @Model.PaidAmount</p>
+     <p><strong>Due Amount </strong>: @Model.DueAmount</p>
+   
+</div>
+
+}

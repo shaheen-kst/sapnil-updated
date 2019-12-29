@@ -1,0 +1,461 @@
+@model Sapnil.Models.Customer
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div>
+    
+    
+    <div class="row px-5 m-3">
+        
+        <div class = "col-md-4">
+            <dl class="row border">
+                <dd class="col" >
+                @Html.DisplayNameFor(model => model.InvoiceNo)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.InvoiceNo)
+                </dd>
+                <div class="w-100"></div>
+                
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+        </div> <!-- 1st column -->
+        <div class="col-md-4">
+            <dl class="row border">
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.CellNo)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.CellNo)
+                </dd>
+                <div class="w-100"></div>
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+            </dl>
+        </div> <!--2nd column -->
+        <div class="col-md-4">
+            <dl class="row border">
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.InvoiceDate)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.InvoiceDate)
+                </dd>
+                <div class="w-100"></div>
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.DeliveryDate)
+                </dd>
+            </dl>
+        </div> <!--3rd Column-->
+    </div> <!-- row -->
+    <div class="row px-5 m-3">
+        
+    <table class="table-bordered ">
+        <thead class="border">
+            <th class="px-5 border"> Product </th>
+            <th class="px-5 border">Quantity</th>
+            <th class="px-5 border"> Price</th>
+        </thead>
+        @if(Model.Product.FrameName != null)
+        {
+           <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Product.FrameName)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.FrameQty)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.FramePrice)
+                </td>
+            </tr>
+        }
+        @if(Model.Product.PowerLense != null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Product.PowerLense)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.PowerLenseQty)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.PowerLensePrice)
+                </td>
+            </tr>
+        }
+       @if(Model.Product.ContactLense !=null)
+       {
+           <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Product.ContactLense)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.ContactLenseQty)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.ContactLensePrice)
+                </td>
+            </tr>
+       }
+    </table>
+   
+    </div> <!-- row -->
+    <div class="row px-5 m-3">
+         <table class="table-bordered ">
+        <thead class="border">
+            <th class="px-5 border"> Eye </th>
+            <th class="px-5 border"> Sph </th>
+            <th class="px-5 border">Cyl</th>
+            <th class="px-5 border"> Axis</th>
+            <th class="px-5 border"> N.Add</th>
+        </thead>
+      
+         
+      
+           <tr>
+               <td> Right </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeSph)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeCyl)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeAxis)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeAdd)
+                    </td>
+            <tr>
+            <tr> 
+               <td> Left</td>
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeSph)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeCyl)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeAxis)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeAdd)
+                </td>
+            </tr>
+        </table>
+        
+    </div> <!-- row -->    
+        
+    <div class="row px-5 m-3">
+        
+            <div class="col-md-4 p-4 offset-md-2">
+                <h3 class="border text-center d-inline-block rounded-circle ml-5 p-4">
+                    @{
+                        var paid = "PAID";
+                        var due = "DUE";
+                    @if(Model.Payment.DueAmount == null || Model.Payment.DueAmount == 0) {@paid;} 
+                    else { @due ;}
+                    }
+
+                   
+                 </h3>
+            </div>
+            <table class="table-bordered col-md-6 ">
+                <tr>
+                    <td>Total Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.TotalAmmount)</td>
+                </tr>
+                <tr>
+                    <td>Discount </td>
+                    <td> @Html.DisplayFor(model => model.Payment.DiscountAmount)</td>
+                </tr>
+                <tr>
+                    <td>Net Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.NetAmount)</td>
+                </tr>
+                <tr>
+                    <td>Paid Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.PaidAmount)</td>
+                </tr>
+                  <tr>
+                    <td>Due Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.DueAmount)</td>
+                </tr>
+
+
+            </table>
+       
+
+    </div> <!--row-->
+    <div class="row  px-5 m-3">
+        <div class="col-md-12 pt-4 mt-5">
+            <p class="text-right border-top">Authorized Signature</p>
+        </div>
+    </div> <!--row-->
+        
+      
+</div>
+<hr>
+        <div class="container bg pt-1 shadow bg-white rounded receipt-hack">
+            <div class="row mx-5 px-3 ">
+            <div class="col-md-2 text-center ">
+                <img src="/images/sign.jpg" class=" rounded-circle d-inline-block pt-1" width="125" height="125"/>
+            </div>
+            <div class="col-md-9">
+                <h1 class="pt-3  text-center name text-danger">স্বপ্নীল অপটিকস্</h1>
+                <h5 class="text-center gf ">৪৯, জিগাতলা, ধানমন্ডি, ঢাকা-১২০৯</h5>
+                <h6 class="text-center">Cell: 01712841584, Phone : 9615923 </h6>
+
+
+            </div>
+            </div> <!--row-->
+        </div><!--container -->
+<div>
+    
+    <hr />
+    <div class="row px-5 m-3">
+        
+        <div class = "col-md-4">
+            <dl class="row border">
+                <dd class="col" >
+                @Html.DisplayNameFor(model => model.InvoiceNo)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.InvoiceNo)
+                </dd>
+                <div class="w-100"></div>
+                
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+        </div> <!-- 1st column -->
+        <div class="col-md-4">
+            <dl class="row border">
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.CellNo)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.CellNo)
+                </dd>
+                <div class="w-100"></div>
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.Address)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+            </dl>
+        </div> <!--2nd column -->
+        <div class="col-md-4">
+            <dl class="row border">
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.InvoiceDate)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.InvoiceDate)
+                </dd>
+                <div class="w-100"></div>
+                <dd class="col">
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </dd><span class="d-inline-block float-right">:</span>
+                <dd class="col">
+                    @Html.DisplayFor(model => model.DeliveryDate)
+                </dd>
+            </dl>
+        </div> <!--3rd Column-->
+    </div> <!-- row -->
+    <div class="row px-5 m-3">
+        
+    <table class="table-bordered ">
+        <thead class="border">
+            <th class="px-5 border"> Product </th>
+            <th class="px-5 border"> Quantity</th>
+            <th class="px-5 border"> Price</th>
+        </thead>
+        @if(Model.Product.FrameName != null)
+        {
+           <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Product.FrameName)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.FrameQty)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.FramePrice)
+                </td>
+            </tr>
+        }
+        @if(Model.Product.PowerLense != null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Product.PowerLense)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.PowerLenseQty)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.PowerLensePrice)
+                </td>
+            </tr>
+        }
+       @if(Model.Product.ContactLense !=null)
+       {
+           <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Product.ContactLense)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.ContactLenseQty)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.ContactLensePrice)
+                </td>
+            </tr>
+       }
+    </table>
+   
+    </div> <!-- row -->
+    <div class="row px-5 m-3">
+         <table class="table-bordered ">
+        <thead class="border">
+            <th class="px-5 border"> Eye </th>
+            <th class="px-5 border"> Sph </th>
+            <th class="px-5 border">Cyl</th>
+            <th class="px-5 border"> Axis</th>
+            <th class="px-5 border"> N.Add</th>
+        </thead>
+      
+           <tr> 
+               <td> Left</td>
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeSph)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeCyl)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeAxis)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeAdd)
+                </td>
+            </tr>
+      
+           <tr>
+               <td> Right </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeSph)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeCyl)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeAxis)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(model => model.Product.RightEyeAdd)
+                    </td>
+            <tr>
+        </table>
+        
+    </div> <!-- row -->    
+        
+    <div class="row px-5 m-3">
+            <div class="col-md-4 p-4 offset-md-2">
+                <h3 class="border text-center d-inline-block rounded-circle ml-5 p-4">
+                    @{
+                        
+                    @if(Model.Payment.DueAmount == null || Model.Payment.DueAmount == 0) {@paid;} 
+                    else { @due ;}
+                    }
+
+                   
+                 </h3>
+            </div>
+        
+            <table class="table-bordered col-md-6 ">
+                <tr>
+                    <td>Total Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.TotalAmmount)</td>
+                </tr>
+                <tr>
+                    <td>Discount </td>
+                    <td> @Html.DisplayFor(model => model.Payment.DiscountAmount)</td>
+                </tr>
+                <tr>
+                    <td>Net Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.NetAmount)</td>
+                </tr>
+                <tr>
+                    <td>Paid Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.PaidAmount)</td>
+                </tr>
+                  <tr>
+                    <td>Due Amount</td>
+                    <td> @Html.DisplayFor(model => model.Payment.DueAmount)</td>
+                </tr>
+
+
+            </table>
+       
+
+    </div> <!--row-->
+        <div class="row  px-5 m-3">
+        <div class="col-md-12 pt-4 mt-5">
+            <p class="text-right border-top">Authorized Signature</p>
+        </div>
+    </div> <!--row-->
+        
+      
+</div>
+<!-- <div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div> -->
