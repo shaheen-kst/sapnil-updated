@@ -47,7 +47,7 @@ h6{letter-spacing: 2.2px;}
 
 .current > .nav-link { font-weight: bold !important;color: #833131 !important;}
 
-main { min-height: 620px;}
+main { min-height: 500px;}
 @media print {
     table,th,td { border: 1px solid rgb(31, 31, 31);}
     nav { display: none;}
