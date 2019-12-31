@@ -14,7 +14,7 @@ nav > .pagination {text-align: center !important;}
 .btn{width: 100%;}
 .src{ width:1.25em; height: 1em;}
 .mlh-4 {margin-left: 1.85rem !important;}
-.form-control,btn {height: calc(1.12em + .96rem + 2px) !important;font-size: .9rem;border: 1px solid  #33889b5c;}
+.form-control, .btn {height: calc(1.12em + .96rem + 2px) !important;font-size: .9rem;border: 1px solid  #33889b5c;}
 .form-group { margin-bottom: 0.65rem;}
 //fieldset {box-shadow: 0px 3px 3px 0px rgba(6,6,6,0.3);}
 fieldset {box-shadow: 0px .5px 5px 0px rgba(6,6,6,0.2);}
@@ -48,6 +48,7 @@ h6{letter-spacing: 2.2px;}
 .current > .nav-link { font-weight: bold !important;color: #833131 !important;}
 
 main { min-height: 500px;}
+.avatar {font-size: 6.5rem;}
 @media print {
     table,th,td { border: 1px solid rgb(31, 31, 31);}
     nav { display: none;}
