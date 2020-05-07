@@ -2,6 +2,7 @@ $(document).ready(function(){
    let tA = $('.totalAmount');
    let nA = $('#NetAmount');
    let dA = $('#DueAmount');
+   let pA = $('#PaidAmount');
    tA.on('focus',function(){
    //let framePrice = 0;
        //if($('#FramePrice').val() != ''){ framePrice = parseInt($('#FramePrice').val()); }
@@ -21,7 +22,9 @@ $(document).ready(function(){
       console.log(totalAmount - discountAmount);
 
    });
+  // zeroing DueAmount after full payment
 
+ 
    //Due Amount
    dA.on('focus', function(){
         let paidAmount = $('#PaidAmount').val() != '' ? parseInt($('#PaidAmount').val()) : 0;
@@ -29,7 +32,23 @@ $(document).ready(function(){
         let netAmount = parseInt(nA.val());
         let dueAmount = netAmount - paidAmount;
         dA.val(dueAmount);
+      
+        
         console.log('Due Amount :'+dueAmount);
    });
 
+   pA.on('blur', function(){
+    zeroDueAmount();
+   });
+   $('#saleForm').on('submit', function(){
+      zeroDueAmount();
+   })
+
+
+   function zeroDueAmount (){
+      if(parseInt(nA.val()) == parseInt(pA.val())){
+         dA.val(0);
+      }
+   }
 });
+

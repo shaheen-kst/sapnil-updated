@@ -33,6 +33,7 @@ namespace  Sapnil.Models
         public decimal? FramePrice { get; set; }
         [Display(Name="Power Lense")]
         public LenseCategory? PowerLense { get; set; }
+        
         [Display(Name="Quantity")]
 
         public uint? PowerLenseQty { get; set;  }
@@ -79,6 +80,8 @@ namespace  Sapnil.Models
         [Display(Name="Due Amount")]
         public decimal? DueAmount { get; set; }
         public DateTime? EntryDate { get; set; }
+        [Display(Name = "IPD")]
+        public string Ipd { get; set; }
 
       
     }

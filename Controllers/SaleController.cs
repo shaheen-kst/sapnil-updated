@@ -60,7 +60,7 @@ namespace Sapnil.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
-            [Bind("Name,CellNo,Address,DeliveryDate,FrameName,FrameQty,FramePrice,PowerLense,PowerLenseQty,PowerLensePrice,ContactLense,ContactLenseQty,ContactLensePrice,LeftEyeSph,LeftEyeCyl,LeftEyeAxis,LeftEyeAdd,RightEyeSph,RightEyeCyl,RightEyeAxis,RightEyeAdd,FocalOption,DeliveryStatus,TotalAmmount,DiscountAmount,NetAmount,PaidAmount,DueAmount,EntryDate")]
+            [Bind("Name,CellNo,Address,DeliveryDate,FrameName,FrameQty,FramePrice,PowerLense,PowerLenseQty,PowerLensePrice,ContactLense,ContactLenseQty,ContactLensePrice,LeftEyeSph,LeftEyeCyl,LeftEyeAxis,LeftEyeAdd,RightEyeSph,RightEyeCyl,RightEyeAxis,RightEyeAdd,FocalOption,DeliveryStatus,TotalAmmount,DiscountAmount,NetAmount,PaidAmount,DueAmount,EntryDate,Ipd")]
              ProductVM productVM)
         {
              var exp = ExpirationDate();
@@ -83,7 +83,7 @@ namespace Sapnil.Controllers
                     PowerLenseQty = productVM.PowerLenseQty,PowerLensePrice = productVM.PowerLensePrice,ContactLense = productVM.ContactLense,
                     ContactLenseQty = productVM.ContactLenseQty,ContactLensePrice = productVM.ContactLensePrice,LeftEyeSph = productVM.LeftEyeSph,
                     LeftEyeCyl = productVM.LeftEyeCyl,LeftEyeAxis = productVM.LeftEyeAxis,LeftEyeAdd = productVM.LeftEyeAdd,RightEyeSph = productVM.RightEyeSph,
-                    RightEyeCyl = productVM.RightEyeCyl,RightEyeAxis = productVM.RightEyeAxis,RightEyeAdd = productVM.RightEyeAdd,FocalOption = productVM.FocalOption,DeliveryStatus = productVM.DeliveryStatus
+                    RightEyeCyl = productVM.RightEyeCyl,RightEyeAxis = productVM.RightEyeAxis,RightEyeAdd = productVM.RightEyeAdd,FocalOption = productVM.FocalOption,DeliveryStatus = productVM.DeliveryStatus, Ipd = productVM.Ipd
                 };
                 Payment payment = new Payment{
                     TotalAmmount = productVM.TotalAmmount,DiscountAmount = productVM.DiscountAmount,NetAmount = productVM.NetAmount,
@@ -218,14 +218,23 @@ namespace Sapnil.Controllers
         private uint InvoiceNo ()
         {
             var lastRecord = _context.Customers.FirstOrDefault(d => d.InvoiceDate == _context.Customers.Max(x=>x.InvoiceDate));
-            uint invoiceNo = lastRecord.InvoiceNo +1;
+             uint invoiceNo;
+            if(lastRecord == null) 
+            {  
+                invoiceNo = 100;
+            }else {
+                 invoiceNo = lastRecord.InvoiceNo +1;
+            }
+            
             return invoiceNo;
         }
 
         private bool ExpirationDate()
         {
-            var d = DateTime.Parse("2019-12-23");
-            var expDate = d.AddDays(5);
+            var d = DateTime.Parse("2020-02-08");
+           // var expDate = d.AddDays(150);
+           // 07/05/2020
+            var expDate = d.AddDays(150);
             if(DateTime.Now <= expDate)
             {
                 _logger.LogDebug("ok");

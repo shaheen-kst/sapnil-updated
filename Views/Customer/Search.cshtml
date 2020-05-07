@@ -8,7 +8,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-5">
-        <form asp-action="Index" method="get">  
+        <form asp-action="Index" method="get" autocomplete="off">  
                 <div class="input-group ">
                 <input type="text" name="keyword" class="form-control search" placeholder="Search" value="@ViewBag.keyword">
                 <div class="input-group-append">
@@ -21,11 +21,11 @@
     <div class="col-md-7 mb-5">
         <form asp-action="Search" autocomplete="off">
             <div class="input-group">
-                <input type="text" name="from" class="form-control date" value="@ViewBag.from"/>
+                <input type="text" name="from" class="form-control date" value="@ViewBag.from" placeholder="yyyy-mm-dd"/>
                 <div class="input-group-append">
                     <span class="input-group-text">To </span>
                 </div> <!-- append -->
-                <input type="text" name="to" class="form-control date" value="@ViewBag.to" />
+                <input type="text" name="to" class="form-control date" value="@ViewBag.to" placeholder="yyyy-mm-dd" />
                 <div class="input-group-append">
                     <button type="submit" class=""><img src="~/images/search.png" class="src" /></button>
                 </div><!-- append -->
@@ -34,7 +34,7 @@
         </form>
     </div> <!-- end of col -->
 </div> <!-- End row -->
-<table class="table">
+<table class="table table-borderd px-3">
     <thead>
         <tr>
             <th>

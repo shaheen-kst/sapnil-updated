@@ -22,20 +22,29 @@ namespace Sapnil.Controllers
 
         // GET: CustomerControl
         [Authorize]
-        public IActionResult Index(string keyword=null, int page=1, int pageSize = 4)
+        public IActionResult Index(string keyword=null, int page=1, int pageSize = 15)
         {
           IQueryable<Customer> customers = null;
           if(string.IsNullOrEmpty(keyword))
            {
             customers = _context.Customers.OrderByDescending(d => d.InvoiceDate).Include(i => i.Product).Include(i => i.Payment);
            PagedList<Customer> model = new PagedList<Customer>(customers, page, pageSize);
-           Console.WriteLine("Working");
+          
            return View(model);
            }
            int invoiceNo;
            bool success = Int32.TryParse(keyword.Trim(), out invoiceNo);
            if(!success) invoiceNo =0;
-           customers = _context.Customers.Where(m => m.Name.Contains(keyword.Trim()) || m.CellNo == keyword.Trim() || m.InvoiceNo == invoiceNo).OrderByDescending(d => d.InvoiceDate).Include(i => i.Product).Include(i => i.Payment);
+          // customers = _context.Customers.Where(m => m.Name.Contains(keyword.Trim()) || m.CellNo == keyword.Trim() || m.InvoiceNo == invoiceNo).OrderByDescending(d => d.InvoiceDate).Include(i => i.Product).Include(i => i.Payment);
+          if(!string.IsNullOrEmpty(keyword))
+          {
+              ViewBag.keyword = keyword;
+          }
+          else 
+          {
+              ViewBag.keyword = invoiceNo;
+          }
+          customers = _context.Customers.Where(m => EF.Functions.Like(m.Name, $"%{keyword.Trim()}%") || m.CellNo == keyword.Trim() || m.InvoiceNo == invoiceNo).OrderByDescending(d => d.InvoiceDate).Include(i => i.Product).Include(i => i.Payment);
            PagedList<Customer> mdl = new PagedList<Customer>(customers,page, pageSize);
           return View(mdl);
         }
@@ -166,7 +175,7 @@ namespace Sapnil.Controllers
         }
         
         [Authorize]
-        public IActionResult Search (DateTime? from, DateTime? to, int page=1, int pageSize=4)
+        public IActionResult Search (DateTime? from, DateTime? to, int page=1, int pageSize=15)
         {
            if(from !=null && to !=null )
            {

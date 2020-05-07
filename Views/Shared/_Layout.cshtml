@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
 
     <link href="https://fonts.googleapis.com/css?family=Galada|Hind+Siliguri|Lato|Martel|Mina&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Kameron&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Calistoga&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="~/css/main.css" />
 </head>
 <body>
@@ -33,7 +34,7 @@
         <div class="container bg pt-1 shadow bg-white rounded">
             <div class="row mx-5 px-3 ">
             <div class="col-md-2 text-center ">
-                <img src="/images/sign.jpg" class=" rounded-circle d-inline-block pt-1" width="125" height="125"/>
+                <img src="/images/sign.jpg" class=" rounded-circle d-inline-block pt-1 logo" @* width="125" height="125" *@/>
             </div>
             <div class="col-md-9">
                 <h1 class="pt-3  text-center name text-danger">স্বপ্নীল অপটিকস্</h1>
@@ -47,7 +48,7 @@
 
         <div class="row">
             <div class="container shadow  bg-white rounded">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow px-5">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow px-5 bg-info">
                
                 <a class="navbar-brand" asp-area="" asp-controller="" asp-action="">Sapnil</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -96,15 +97,15 @@
                                     <li class="nav-item">
                                         <form method="post" asp-action="Logout" asp-controller="Admin">
                                             <button type="submit" class="nav-link btn btn-link py-0">
-                                            <i class="fas fa-sign-out-alt"></i> Logout  @User.Identity.Name 
+                                            <i class="fas fa-sign-out-alt"></i> Logout  @User.Identity.Name</button>
                                         </form>
             
                                     </li>
 
                                 }else {
-                                        <li class="nav-item">
+                                        @* <li class="nav-item">
                                         <a class="nav-link" asp-controller="Admin" asp-action="Register"><span class="fas fa-user"></span> Sign Up</a>
-                                        </li>
+                                        </li> *@
                                         <li class="nav-item">
                                         <a class="nav-link"  asp-controller="Admin"  asp-action="Login"><span class="fas fa-sign-in-alt"></span> Login</a>
                                         </li>
@@ -119,7 +120,7 @@
             </div><!--container-->
         </div><!--row-->
     </header>
-    <div class="container pt-5 shadow  bg-white rounded ">
+    <div class="container pt-5 shadow  bg-white rounded null">
         <main role="main" class="pb-3">
             @RenderBody()
             
@@ -127,8 +128,9 @@
     </div>
  
        <footer class="border-top footer text-muted">
-        <div class="container  shadow rounded bg-primary" >
-           <p class="text-center text-white"> &copy; 2005-2019 Sapnil Optics, 49, Jigatala, Dhanmondi,Dhaka-1209, Cell: 01712841584, Phone : 9615923 </p>
+        <div class="container  shadow rounded fbg" >
+           <p class="text-center text-white">  2005-2020 Sapnil Optics, 49, Jigatala, Dhanmondi, Dhaka-1209, : 01712841584, Phone : 9615923 </p>
+            <span class="text-white author">Developed by Shaheen, Cell: 01721505978. All Right Reserved by Author.</span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script> 

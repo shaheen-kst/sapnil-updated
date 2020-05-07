@@ -8,13 +8,13 @@
 
 <div class="row justify-content-center">
     <div class="col-md-7 mb-5">
-        <form asp-action="Search">
+        <form asp-action="Search" autocomplete="off">
             <div class="input-group">
-                <input type="text" name="from" class="form-control date" value="@ViewBag.from"/>
+                <input type="text" name="from" class="form-control date" value="@ViewBag.from" placeholder="yyyy-mm-dd"/>
                 <div class="input-group-append">
                     <span class="input-group-text">To </span>
                 </div> <!-- append -->
-                <input type="text" name="to" class="form-control date" value="@ViewBag.to" />
+                <input type="text" name="to" class="form-control date" value="@ViewBag.to" placeholder="yyyy-mm-dd"/>
                 <div class="input-group-append">
                     <button type="submit" class=""><img src="~/images/search.png" class="src" /></button>
                 </div><!-- append -->
@@ -24,7 +24,7 @@
     </div> <!-- end of col -->
 </div> <!-- End row -->
 
-<table class="table table-bordered table-responsive">
+<table class="table table-bordered table-striped px-3">
     <thead>
         <tr>
             <th> Invoice No</th>
@@ -50,23 +50,37 @@
                 <td>@i.CellNo</td>
                 <td>@i.Address</td>
                 <td>@i.InvoiceDate.ToString("yy-MM-dd hh:mm:ss tt")</td>
-                <td>@i.Payment.TotalAmmount</td>
-                <td>@i.Payment.DiscountAmount</td>
-                <td>@i.Payment.NetAmount</td>
-                <td>@i.Payment.PaidAmount</td>
-                <td>@i.Payment.DueAmount</td>
+                @{
+                    var tA = string.Format("{0:F2}", (double)i.Payment.TotalAmmount );
+                    var dA = string.Format("{0:F2}", (double)i.Payment.DiscountAmount );
+                    var nA = string.Format("{0:F2}", (double)i.Payment.NetAmount );
+                    var pA = string.Format("{0:F2}", (double)i.Payment.PaidAmount);
+                    var dueA = string.Format("{0:F2}", (double)i.Payment.DueAmount);
+                   
+                    <td>@tA</td>
+                    <td>@dA</td>
+                    <td>@nA</td>
+                    <td>@pA</td>
+                    <td>@dueA</td>
+                }
+                
             </tr>
         }
         if(Model != null)
            {
+                var tA = string.Format("{0:F2}", (double) Model.Sum(a => a.TotalAmmount));
+                var dA = string.Format("{0:F2}", (double) Model.Sum(a => a.DiscountAmount));
+                var nA = string.Format("{0:F2}", (double) Model.Sum(a => a.NetAmount) );
+                var pA = string.Format("{0:F2}", (double) Model.Sum(a => a.PaidAmount));
+                var dueA = string.Format("{0:F2}", (double) Model.Sum(a => a.DueAmount));
+
             <tr border-top>
-            
                 <td colspan="5">Total =</td>
-                <td>@Model.Sum(a => a.TotalAmmount)</td>
-                <td>@Model.Sum(a => a.DiscountAmount)</td>
-                <td>@Model.Sum(a => a.NetAmount)</td>
-                <td> @Model.Sum(a => a.PaidAmount)</td>
-                <td>@Model.Sum(a => a.DueAmount)</td>
+                <td>@tA</td>
+                <td>@dA</td>
+                <td>@nA</td>
+                <td>@pA</td>
+                <td>@dueA</td>
             
             </tr>
            }

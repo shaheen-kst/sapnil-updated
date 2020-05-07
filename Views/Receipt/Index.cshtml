@@ -7,7 +7,7 @@
 
 
 <div>
-    
+    <p class="text-right px-3 printCopy"> Customer's Copy</p>
     
     <div class="row px-5 m-3">
         
@@ -15,6 +15,7 @@
             <dl class="row border">
                 <dd class="col" >
                 @Html.DisplayNameFor(model => model.InvoiceNo)
+
                 </dd><span class="d-inline-block float-right">:</span>
                 <dd class="col">
                     @Html.DisplayFor(model => model.InvoiceNo)
@@ -56,10 +57,10 @@
                 </dd>
                 <div class="w-100"></div>
                 <dd class="col">
-                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                    @Html.DisplayNameFor(model => model.DeliveryDate) 
                 </dd><span class="d-inline-block float-right">:</span>
                 <dd class="col">
-                    @Html.DisplayFor(model => model.DeliveryDate)
+                    @Html.DisplayFor(model => model.DeliveryDate) 7:00 PM
                 </dd>
             </dl>
         </div> <!--3rd Column-->
@@ -176,9 +177,16 @@
     </div> <!-- row -->    
         
     <div class="row px-5 m-3">
-        
-            <div class="col-md-4 p-4 offset-md-2">
-                <h3 class="border text-center d-inline-block rounded-circle ml-5 p-4">
+               <table class="table-bordered col-md-2">
+               <tr>
+                   <td>IPD </td>
+                   <td>
+                       @Html.DisplayFor(model => model.Product.Ipd)
+                   </td>
+               </tr>
+           </table>
+            <div class="col-md-4 p-4 ">
+                <h3 class="border text-center d-inline-block rounded-circle ml-5 p-4 paymentStatus">
                     @{
                         var paid = "PAID";
                         var due = "DUE";
@@ -217,18 +225,20 @@
 
     </div> <!--row-->
     <div class="row  px-5 m-3">
-        <div class="col-md-12 pt-4 mt-5">
-            <p class="text-right border-top">Authorized Signature</p>
+        <div class="col-md-12 p3-4 mt-4">
+            <p class="text-right border-top ML">Authorized Signature</p>
         </div>
     </div> <!--row-->
-        
-      
+    <p class="text-center p">2005-2020 Sapnil Optics, 49, Jigatala, Dhanmondi, Dhaka-1209, imo : 01972 841584, Phone : 9615923 </p>
+           <div class="row fix">
+              <p class=" col-md-12 text-center border-top py-2 dev">Software Developed by Shaheen, Cell: 01721505978. All Right Reserved by Author.</p>
+          </div>
 </div>
 <hr>
         <div class="container bg pt-1 shadow bg-white rounded receipt-hack">
             <div class="row mx-5 px-3 ">
             <div class="col-md-2 text-center ">
-                <img src="/images/sign.jpg" class=" rounded-circle d-inline-block pt-1" width="125" height="125"/>
+                <img src="/images/sign.jpg" class=" rounded-circle d-inline-block pt-1 logo" @* width="125" height="125" *@/>
             </div>
             <div class="col-md-9">
                 <h1 class="pt-3  text-center name text-danger">স্বপ্নীল অপটিকস্</h1>
@@ -238,10 +248,12 @@
 
             </div>
             </div> <!--row-->
+
         </div><!--container -->
+         <p class="text-right px-3 printCopy"> Dealer's Copy</p>
 <div>
     
-    <hr />
+    
     <div class="row px-5 m-3">
         
         <div class = "col-md-4">
@@ -292,7 +304,7 @@
                     @Html.DisplayNameFor(model => model.DeliveryDate)
                 </dd><span class="d-inline-block float-right">:</span>
                 <dd class="col">
-                    @Html.DisplayFor(model => model.DeliveryDate)
+                    @Html.DisplayFor(model => model.DeliveryDate) 7:00 PM
                 </dd>
             </dl>
         </div> <!--3rd Column-->
@@ -366,25 +378,6 @@
             <th class="px-5 border"> N.Add</th>
         </thead>
       
-           <tr> 
-               <td> Left</td>
-                <td>
-                    @Html.DisplayFor(model => model.Product.LeftEyeSph)
-                </td>
-           
-                <td>
-                    @Html.DisplayFor(model => model.Product.LeftEyeCyl)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(model => model.Product.LeftEyeAxis)
-                </td>
-            
-                <td>
-                    @Html.DisplayFor(model => model.Product.LeftEyeAdd)
-                </td>
-            </tr>
-      
            <tr>
                <td> Right </td>
                     <td>
@@ -403,13 +396,40 @@
                         @Html.DisplayFor(model => model.Product.RightEyeAdd)
                     </td>
             <tr>
+
+            <tr> 
+               <td> Left</td>
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeSph)
+                </td>
+           
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeCyl)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeAxis)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(model => model.Product.LeftEyeAdd)
+                </td>
+            </tr>
         </table>
         
     </div> <!-- row -->    
         
     <div class="row px-5 m-3">
-            <div class="col-md-4 p-4 offset-md-2">
-                <h3 class="border text-center d-inline-block rounded-circle ml-5 p-4">
+           <table class="table-bordered col-md-2">
+               <tr>
+                   <td>IPD </td>
+                   <td>
+                       @Html.DisplayFor(model => model.Product.Ipd)
+                   </td>
+               </tr>
+           </table>
+            <div class="col-md-4 p-4 ">
+                <h3 class="border text-center d-inline-block rounded-circle  p-4 paymentStatus">
                     @{
                         
                     @if(Model.Payment.DueAmount == null || Model.Payment.DueAmount == 0) {@paid;} 
@@ -448,14 +468,12 @@
 
     </div> <!--row-->
         <div class="row  px-5 m-3">
-        <div class="col-md-12 pt-4 mt-5">
-            <p class="text-right border-top">Authorized Signature</p>
+        <div class="col-md-12 pt-3 mt-4">
+            <p class="text-right border-top ML">Authorized Signature</p>
         </div>
     </div> <!--row-->
-        
-      
+          <p class="text-center p">2005-2020 Sapnil Optics, 49, Jigatala, Dhanmondi, Dhaka-1209, imo : 01972 841584, Phone : 9615923 </p>
+          <div class="row fix">
+              <p class=" col-md-12 text-center border-top py-2 dev">Software Developed by Shaheen, Cell: 01721505978. All Right Reserved by Author.</p>
+          </div>
 </div>
-<!-- <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div> -->

@@ -10,17 +10,29 @@
 <div style="background-color:#e3e3e3;color: red;">
     @if(Model.TotalAmmount !=null)
     {
-      <p> <strong>Total Amount</strong> -  @Model.TotalAmmount</p>
+      var tA = Model.TotalAmmount; var total = tA.ToString("N2");
+      <p> Total Amount :  @total</p>
     }
-   
-     <p><strong>NetAmount</strong> -  @Model.NetAmount</p>
+      @{
+        var NA = Model.NetAmount; var nA = NA.ToString("N2");
+        <p>NetAmount :  @nA</p>
+      }
+     
     
     @if(Model.DiscountAmount != null)
     {
-     <p><strong>Discount Amount</strong> -@Model.DiscountAmount</p>
+     var dA = string.Format("{0:F2}", (double) Model.DiscountAmount);
+     <p>Discount Amount : @dA</p>
     }
-     <p><strong>Paid Amount </strong>: @Model.PaidAmount</p>
-     <p><strong>Due Amount </strong>: @Model.DueAmount</p>
+     @{ 
+      var pA = string.Format("{0:F2}", (double) Model.PaidAmount );
+     <p>Paid Amount : @pA</p>
+    }
+
+     @{
+        var dueA = string.Format("{0:F2}", (double) Model.DueAmount);
+       <p>Due Amount : @dueA</p>
+     }  
    
 </div>
 

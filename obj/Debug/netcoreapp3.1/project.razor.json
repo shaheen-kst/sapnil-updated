@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\shaheen\\Music\\Sapnil-8.2.1\\Sapnil\\Sapnil.csproj",
+  "TargetFramework": "netcoreapp3.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  }
+}

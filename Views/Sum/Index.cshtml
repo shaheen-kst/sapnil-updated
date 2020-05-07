@@ -7,13 +7,13 @@
 
 <div class="row justify-content-center">
     <div class="col-md-7 mb-5">
-        <form asp-action="Search">
+        <form asp-action="Search" autocomplete="off">
             <div class="input-group">
-                <input type="text" name="from" class="form-control date" />
+                <input type="text" name="from" class="form-control date" placeholder="yyyy-mm-dd"/>
                 <div class="input-group-append">
                     <span class="input-group-text">To </span>
                 </div> <!-- append -->
-                <input type="text" name="to" class="form-control date" />
+                <input type="text" name="to" class="form-control date" placeholder="yyyy-mm-dd"/>
                 <div class="input-group-append">
                     <button type="submit" class=""><img src="~/images/search.png" class="src" /></button>
                 </div><!-- append -->
@@ -23,7 +23,7 @@
     </div> <!-- end of col -->
 </div> <!-- End row -->
 
-<table class="table">
+<table class="table table-borderd px-3">
     <thead>
         <tr>
             <th>

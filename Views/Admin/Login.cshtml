@@ -23,9 +23,9 @@
                 <div class="col-md-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <span class="input-group-text text-info"><i class="fas fa-user"></i></span>
                         </div> <!--prepend-->
-                         <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                         <input asp-for="Email" class="form-control" placeholder=""  value="sapnil@gmail.com"/>
                     </div><!--input-group -->
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div> <!-- Email -->
@@ -35,10 +35,10 @@
                 <div class="col-md-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-unlock"></i> </div> <!-- prepend text -->
+                            <div class="input-group-text text-info"><i class="fas fa-lock"></i> </div> <!-- prepend text -->
 
                         </div><!--Prepend -->
-                        <input asp-for="Password" class="form-control" placeholder="Enter your password"/>
+                        <input asp-for="Password" class="form-control" placeholder=""/>
                     </div> <!--input-group-->
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
@@ -53,7 +53,7 @@
             <div class="form-group row justify-content-center">
                 @* <label for="" class="col-md-2 col-form-labeel"></label> *@
                 <div class="col-md-3">
-                    <input type="submit" value="Login" class="btn btn-primary d-block" />
+                    <input type="submit" value="Login" class="btn btn-info d-block" />
                 </div>
                 
             </div>

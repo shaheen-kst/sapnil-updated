@@ -14,6 +14,7 @@ namespace Sapnil.Models
         public uint? FrameQty { get; set; }
         public decimal? FramePrice { get; set; }
         public LenseCategory? PowerLense { get; set; }
+       
         public uint? PowerLenseQty { get; set;  }
         public decimal? PowerLensePrice { get; set; }
         public ContactLenseCategory? ContactLense  { get; set; }
@@ -34,6 +35,7 @@ namespace Sapnil.Models
         [Display(Name="Delivery Status")]
         [Required]
         public string DeliveryStatus { get; set; }
+        public string Ipd { get; set; }
         
         public Customer Customer { get; set; }
     }
@@ -43,12 +45,15 @@ namespace Sapnil.Models
         [Display(Name="Crystal White")]
         CrystalWhite,
         [Display(Name="Anti Reflection")]
-        Moon,
+        AntiReflection,
+       
         D,
         [Display(Name="Vari Lux")]
         VariLux,
         [Display(Name="Bluecart")]
-        Bluecart
+        Bluecart,
+        Moon,
+        Photosun
     }
     public enum ContactLenseCategory
     {

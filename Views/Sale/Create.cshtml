@@ -7,10 +7,10 @@
 
 
 
-        <form asp-action="Create" autocomplete="off">
+        <form asp-action="Create" autocomplete="off" id="saleForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <fieldset class="fs-border p-3 mb-3 rounded ">
-    <legend class="">Client Info</legend>
+    <legend class="text-center">Client Info</legend>
         
         <div class="row">
             <div class="col-md-6">
@@ -62,7 +62,7 @@
         <legend class=" text-center">Product info</legend>
         <div class="row">
         <div class="col-md-4">
-            <fieldset class="fs-border py-2 px-3 rounded"> <legend class=""> Frame Info</legend>
+            <fieldset class="fs-border py-2 px-3 rounded"> <legend class="text-center"> Frame Info</legend>
 
             <div class="form-group">
                 <label asp-for="FrameName" class="control-label"></label>
@@ -83,14 +83,15 @@
             <fieldset>
         </div>
         <div class="col-md-4">
-            <fieldset class="fs-border py-2 px-3 rounded"> <legend class=""> Lense Info</legend>
+            <fieldset class="fs-border py-2 px-3 rounded"> <legend class="text-center"> Lense Info</legend>
                 <div class="form-group">
                     <label asp-for="PowerLense" class="control-label"></label>
-                    <select asp-for="PowerLense" class="form-control" asp-items="Html.GetEnumSelectList<LenseCategory>()">
+                    <select asp-for="PowerLense"  class="form-control"  asp-items="Html.GetEnumSelectList<LenseCategory>()" > 
                         <option value="" selected>== Select a lense ==</option>
                     </select>
                     <span asp-validation-for="PowerLense" class="text-danger"></span>
                 </div>
+                
                 <div class="form-group">
                     <label asp-for="PowerLenseQty" class="control-label"></label>
                     <input asp-for="PowerLenseQty" class="form-control" min="1" oninput="validity.valid || (value='');" />
@@ -106,7 +107,7 @@
         </div>
         <div class="col-md-4">
                 <fieldset class="fs-border py-2 px-3 rounded">
-                    <legend class="">Contact Lense</legend>
+                    <legend class="text-center">Contact Lense</legend>
                      <div class="form-group">
                         <label asp-for="ContactLense" class="control-label"></label>
                         <select asp-for="ContactLense" class="form-control" asp-items="Html.GetEnumSelectList<ContactLenseCategory>()">
@@ -130,7 +131,7 @@
      
     
         <fieldset class="fs-border px-2 py-1 mb-3 mt-3 px-3 rounded">
-            <legend class="">Right Eye</legend>
+            <legend class="text-center">Right Eye</legend>
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group row">
@@ -177,7 +178,7 @@
 
     </fieldset>  <!--right eye -->
     <fieldset class="fs-border px-2 py-1 mt-3 px-3 rounded">
-        <legend class="">Left Eye</legend>
+        <legend class="text-center">Left Eye</legend>
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group row">
@@ -223,8 +224,22 @@
         </div>
 
         </fieldset> <!-- left eye -->
+        
+        <fieldset class="fs-border mt-3 px-3 py-1 rounded">
+          <legend class="text-center">IPD Info </legend>
+        
+                <div class="form-group row">
+                    <label asp-for="Ipd" class=" col-md-3 col-form-label"></label>
+                    <div class="col-md-9">
+                        <input asp-for="Ipd"  class="form-control" /> 
+                        <span asp-validation-for="Ipd" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+         
+        </fieldset> <!-- IPD -->
       <fieldset class="fs-border mt-3 px-3 py-1 rounded">
-          <legend class="">Focal & Delivery Info </legend>
+          <legend class="text-center">Focal & Delivery Info </legend>
         <div class="row">
             <div class="col-md-6 border-right">
                 <label asp-for="FocalOption" class="control-label ml-3"></label> 
@@ -258,7 +273,7 @@
     </fieldset>
       
     <fieldset class="fs-border mt-3 p-3 rounded">
-        <legend class="">Payment Details</legend>
+        <legend class="text-center">Payment Details</legend>
 
             <div class="form-group row">
                             <label asp-for="TotalAmmount" class="col-md-7 col-form-label"></label>
@@ -300,7 +315,7 @@
             <div class="form-group row">
                 <label for="" class="col-md-7 col-form-label"></label>
                 <div class="col-md-5">
-                    <input type="submit" value="Submit" class="btn btn-primary" style="width:100%" />
+                    <input type="submit" value="Submit" class="btn btn-info" style="width:100%;@* background-color:#33889B; *@color:#fff;font-weight:bold;font-size:1.2rem" />
                 </div>
             </div>           
          
